@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  
+  .upload-options {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .upload-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #393a41;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+  
+  .upload-option img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .upload-option button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #808080;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .generate-transcript {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .generate-transcript button {
+    padding: 10px 20px;
+    background-color: #808080;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

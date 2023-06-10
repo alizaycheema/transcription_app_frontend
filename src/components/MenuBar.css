@@ -1,0 +1,35 @@
+.menu-bar {
+  position: sticky;
+  top: 50px; /* Adjust the top value according to the height of your navbar */
+  width: 100%; /* Set the width to 100% to match the navbar's width */
+  background-color: #505056;
+  padding: 10px 0;
+}
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-right: 20px;
+  }
+  
+  .menu li:last-child {
+    margin-right: 0;
+  }
+  
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  
+  .menu li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+  }
+  

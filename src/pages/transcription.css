@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .transcription-content {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .transcription-container {
+    background-color: #989898;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 600px;
+    height: 400px;
+    margin-bottom: 20px;
+    overflow: auto;
+  }
+  
+  
+  .transcription-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .transcription-options button {
+    padding: 10px 20px;
+    background-color: #808080;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
