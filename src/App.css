@@ -1,88 +1,9 @@
-
 .container {
   max-width: 1600px;
   height: 800px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0px;
   background-color: #0e0b1a;
-  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #19132f;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.navbar ul {
-  color: aliceblue;
-  list-style-type: none;
-  margin: 0;
-  padding: 10;
-}
-
-.navbar ul li {
-  color: rgb(44, 83, 117);
-  display: inline-block;
-  margin-right: 20px;
-}
-
-
-.description p {
-  margin-top: 10px;
-  font-size: 16px;
-  padding-left: 25%;
-  padding-right: 25%;
-}
-
-.get-started {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #808080; /* Set the background color to grey */
-  color: #ffffff; /* Set the text color to white */
-  border-radius: 5px; /* Set the border radius to make the edges round */
-}
-
-
-
-.image img {
-  max-width: 100%;
-}
-
-
-.content {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #787387;
-}
-
-.description {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image img {
-  max-width: 100%;
-}
-.left {
-  color: #787387; /* Change to your desired color */
-  font-size: 20px; /* Change to your desired font size */
-  font-weight: bold; /* Optional: If you want to make the text bold */
 }

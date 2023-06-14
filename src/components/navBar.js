@@ -1,6 +1,5 @@
 import React from 'react'
-import './MenuBar.css';
-
+import './navBar.css'
 
 function navBar() {
   return (

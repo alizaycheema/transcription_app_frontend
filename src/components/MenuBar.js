@@ -1,4 +1,6 @@
 import React from 'react';
+import './MenuBar.css'
+
 import { Link } from 'react-router-dom';
 
 const MenuBar = () => {

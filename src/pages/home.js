@@ -1,6 +1,8 @@
 import React from 'react'
 import mainImage from '../assets/images/main.jpg';
+import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import './home.css'
 
 const Home = () => {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ const Home = () => {
   
   return (
     <div>
+    <Button variant="contained">Hello World</Button>
     <div className="content">
     <div className="description">
       <p>

@@ -1,14 +1,14 @@
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
   }
   
   .image-container {
     flex: 1;
-    padding: 20px;
+  text-align: right;
   }
   
   .image-container img {
