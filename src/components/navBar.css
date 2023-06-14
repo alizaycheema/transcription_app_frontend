@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #413761;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 2000px;
+}
+
+
+.left {
+  color: #787387; /* Change to your desired color */
+  font-size: 20px; /* Change to your desired font size */
+  font-weight: bold; /* Optional: If you want to make the text bold */
+}
+
+.navbar ul {
+  color: aliceblue;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  color: rgb(44, 83, 117);
+  display: inline-block;
+  margin-right: 10px;
+}
+
+
+

@@ -1,0 +1,48 @@
+
+  .container {
+    max-width: 1600px;
+    margin: 0;
+    padding: 20px;
+  }
+
+
+  .content {
+    display: flex;
+    align-items: center;  
+  }
+
+  .description {
+    flex: 1;
+    padding-right: 20px;
+    align-items: center;
+    
+  }
+
+  .description p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    padding-left: 20%;
+    padding-right: 20%;
+    align-content: center;
+    left: 20;
+  }
+
+  .get-started {
+    align-self: center;
+    margin-left: 40%;
+    font-size: 16px;
+    background-color: #808080; /* Set the background color to grey */
+    color: #ffffff; /* Set the text color to white */
+    border-radius: 5px; /* Set the border radius to make the edges round */
+  
+  }
+
+  .image {
+    flex: 1;
+  }
+
+  .image img {
+    max-width: 100%;
+  }
+

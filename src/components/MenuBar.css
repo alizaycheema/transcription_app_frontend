@@ -1,0 +1,42 @@
+.menu-bar {
+  float: inline-start;
+  padding-top: 9100px;
+  width: 100%;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-top: 0;
+  position: fixed;
+  top: 1;
+  left: 0;
+  right: 0;
+  width: 2000px;
+  float:inline-start
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-right: 10px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
