@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #413761;
+  background-color: #274967;
   padding: 10px;
   position: fixed;
   top: 0;
@@ -13,7 +13,7 @@
 
 
 .left {
-  color: #787387; /* Change to your desired color */
+  color: #f3f5f7; /* Change to your desired color */
   font-size: 20px; /* Change to your desired font size */
   font-weight: bold; /* Optional: If you want to make the text bold */
 }

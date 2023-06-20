@@ -1,79 +1,93 @@
 .signup-container {
-    
-    display: flex;
-    max-width: 1600px;
-    height: 800px;
-    margin-top: 150px;
-    padding: 0px;
-    background-color: #0e0b1a;
-  }
-  
-  .image-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .image-container img {
-    max-width: 100%;
-    
-  }
-  
-  .form-container {
-    margin-top: 50%;
-    padding-top: 50%;
-    flex: 1;
-    padding: 100px ;
-    background-color: #262545;
-    max-width: 300px;
-    max-height: 3000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 7%;
-  }
-  
-  input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #0e0b1a;
+}
 
-    padding: 0px;
-    text-align: center;
-    width: 50%;
-    border-radius: 10%;
-    margin-top: 5px;
-    border-radius: 7%;
+.image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container img {
+  max-width: 100%;
+}
+
+.form2-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #262545;
+  height: 450px;
+  max-width: 400px; /* Decrease the width as desired */
+  margin: 0 auto; /* Center the form container horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form elements vertically */
+  border-radius: 7%;
+}
+
+input {
+  padding: 5px;
+  text-align: center;
+  width: 50%;
+  border-radius: 10%;
+  margin-top: 5px;
+  border-radius: 7%;
+}
+
+h2 {
+  margin-top: 0;
+  color: #504f63;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 0 auto;
+}
+
+label {
+  color: #7a788e;
+  font-weight: bold;
+}
+
+button {
+  align-self: center;
+  padding: 10px 20px;
+  background-color: #3d424a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 5%;
+  margin-top: 20px;
+}
+
+.signupp {
+  color: #7a788e;
+  align-self: center;
+  padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .form2-container {
+    height: 500px;
   }
-  
+
+  input {
+    width: 80%;
+  }
+
   h2 {
-    margin-top: 0%;
-    color: #504f63;
-    text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 0 auto;
-  }
-  
-  label {
-    color: #7a788e;
-    font-weight: bold;
-  }
-  
-  button {
-    align-self: center;
-    padding: 10px 20px;
-    background-color: #3d424a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    width: 100px;
-    border-radius: 5%;
-    margin-top: 20px;
-  }
+}

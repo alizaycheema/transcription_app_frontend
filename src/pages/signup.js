@@ -1,52 +1,116 @@
-import React from 'react';
-import './signup.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button, TextField, Typography } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import './login2.css';
 import mainImage from '../assets/images/main.jpg';
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#fff', // Set primary color to white
+    },
+  },
+});
+
 const Signup = () => {
+  const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const handleSignup = () => {
+    // Perform your signup logic here, e.g., validate user inputs and create a new account
+
+    // Simulating a successful signup
+    setIsRegistered(true);
+
+    // Navigate to the login page after successful signup
+    navigate('/login');
+  };
+
   return (
-    <div className="signup-container">
-    <div className="image-container">
-    <img src={mainImage} alt="login page" />      
-    </div>
-      <div className="form-container">
-        <h2>Sign Up</h2>
-        <form>
-          <div className="name">
-            <label htmlFor="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" />
-          </div>
-          <div className="name">
-            <label htmlFor="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="country">Country:</label>
-            <select id="country" name="country">
-              <option value="USA">USA</option>
-              <option value="Canada">Canada</option>
-              <option value="UK">UK</option>
-              {/* Add more country options as needed */}
-            </select>
-          </div>
-          <button type="submit">Sign Up</button>
-          <div className="sign-in">
-          Already have an account? <Link to="/login">Login</Link>
-          </div>
-        </form>
+    <ThemeProvider theme={theme}>
+      <div className="login-container">
+        <div className="image-container">
+          <img src={mainImage} alt="signup page" />
+        </div>
+        <div className="form1-container">
+          {isRegistered ? (
+            <>
+              <Typography variant="h2" component="h2">
+                Registration successful!
+              </Typography>
+              <Button variant="contained" onClick={() => navigate('/login')}>
+                Go to Login
+              </Button>
+            </>
+          ) : (
+            <>
+              <Typography variant="h2" component="h2">
+                Sign Up
+              </Typography>
+              <form>
+                <div className="form-group">
+                  <TextField
+                    type="text"
+                    id="name"
+                    name="name"
+                    label="Name"
+                    variant="outlined"
+                    fullWidth
+                    InputProps={{
+                      style: { color: '#fff' }, // Set input text color to white
+                    }}
+                    InputLabelProps={{
+                      style: { color: '#fff' }, // Set input label color to white
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <TextField
+                    type="email"
+                    id="email"
+                    name="email"
+                    label="Email"
+                    variant="outlined"
+                    fullWidth
+                    InputProps={{
+                      style: { color: '#fff' }, // Set input text color to white
+                    }}
+                    InputLabelProps={{
+                      style: { color: '#fff' }, // Set input label color to white
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <TextField
+                    type="password"
+                    id="password"
+                    name="password"
+                    label="Password"
+                    variant="outlined"
+                    fullWidth
+                    InputProps={{
+                      style: { color: '#fff' }, // Set input text color to white
+                    }}
+                    InputLabelProps={{
+                      style: { color: '#fff' }, // Set input label color to white
+                    }}
+                  />
+                </div>
+                <Button variant="contained" onClick={handleSignup} color="primary">
+                  Sign Up
+                </Button>
+                <div className="sign-up">
+                  Already have an account? <Link to="/login">Log in</Link>
+                </div>
+              </form>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
 export default Signup;
-
-

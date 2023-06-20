@@ -1,54 +1,134 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
+.up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  top: 0;
+  max-height: 600px;
+}
+
+.up-menubar {
+  padding: 0%;
+  width: 100%;
+  position: fixed;
+}
+
+.up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.upload-heading {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.upload-heading h2 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 1px;
+}
+
+.upload-heading h3 {
+  font-size: 18px;
+  color: #888888;
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.upload-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.upload-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #274967;
+  border-radius: 5px;
+  margin: 0 10px;
+  margin-bottom: 20%;
+}
+
+.upload-option .upload-icon {
+  font-size: 64px;
+  color: #ffffff;
+}
+
+.upload-option button {
+  margin-top: 30px;
+  padding: 20px 30px;
+  background-color: #173249;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-guide {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.upload-guide p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.upload-guide ol {
+  text-align: left;
+  margin-left: 30px;
+  color: #fbf6f6;
+}
+
+.upload-guide li {
+  margin-bottom: 10px;
+  color: #888888;
+}
+.transcribe-icon{
+  color: #173249;
+}
+.transcribe-button{
+  padding: 5px 15px;
+  font-size: 20px;
+  color: #0b0000;
+}
+
+@media (max-width: 600px) {
+  .upload-heading h2 {
+    font-size: 20px;
   }
-  
-  
-  .upload-options {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+
+  .upload-heading h3 {
+    font-size: 16px;
   }
-  
-  .upload-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #393a41;
-    border-radius: 5px;
-    margin: 0 10px;
+
+  .upload-option .upload-icon {
+    font-size: 48px;
   }
-  
-  .upload-option img {
-    width: 80px;
-    height: 80px;
-  }
-  
+
   .upload-option button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #808080;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 8px 16px;
+    font-size: 14px;
   }
+
+
   
-  .generate-transcript {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  .upload-guide p {
+    font-size: 16px;
   }
-  
-  .generate-transcript button {
-    padding: 10px 20px;
-    background-color: #808080;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .upload-guide ol {
+    margin-left: 20px;
+    font-size: 14px;
   }
-  
+}
+

@@ -1,39 +1,69 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MenuBar from '../components/MenuBar';
 import './upload.css';
-import LinkIcon from '../assets/images/ln.png';
-import RecordingIcon from '../assets/images/rc.png';
-import UploadIcon from '../assets/images/up.png';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import TranscribeIcon from '@mui/icons-material/PlayArrow';
 
 const Upload = () => {
-  const [transcriptGenerated, setTranscriptGenerated] = useState(false);
+  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
 
-  const handleGenerateTranscript = () => {
-    // Logic to generate transcript goes here
-    setTranscriptGenerated(true);
+  const handleUploadButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Logic to handle the selected file goes here
+      console.log('Selected file:', file);
+    }
+  };
+
+  const handleTranscribeButtonClick = () => {
+    navigate('/transcription');
   };
 
   return (
-    <div className="container">
-      <MenuBar />
-      <div className="upload-options">
-        <div className="upload-option">
-          <img src={UploadIcon} alt="Upload File" />
-          <button>Upload File</button>
+    <div className="up-container">
+      <div className='up-menubar'>
+        <MenuBar />
+      </div>
+
+      <div className='up-page'>
+        <div className="upload-heading">
+          <h2>Online Transcript Generator</h2>
+          <h3>Get Transcripts for Free</h3>
         </div>
-        <div className="upload-option">
-          <img src={RecordingIcon} alt="Record Now" />
-          <button>Record Now</button>
+        <div className="upload-options">
+          <div className="upload-option">
+            <CloudUploadIcon className="upload-icon" />
+            <button onClick={handleUploadButtonClick}>Upload File</button>
+            <input
+              type="file"
+              accept=".mp3,.wav" // Specify the file types you want to allow
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileInputChange}
+            />
+          </div>
         </div>
-        <div className="upload-option">
-          <img src={LinkIcon} alt="Upload with Link" />
-          <button>Upload with Link</button>
+        <div className="transcribe-button">
+          <button className="transcribe-button" onClick={handleTranscribeButtonClick}>
+            <span>Transcribe</span>
+            <TranscribeIcon className="transcribe-icon" />
+          </button>
+        </div>
+        <div className="upload-guide">
+          <p>How to Upload a File:</p>
+          <ol>
+            <li>Click the "Upload File" button.</li>
+            <li>Select the file you want to upload.</li>
+            <li>Wait for the upload process to complete.</li>
+          </ol>
         </div>
       </div>
-      <div className="generate-transcript">
-        <button onClick={handleGenerateTranscript}>Generate Transcript</button>
-      </div>
-      {transcriptGenerated && <p>Transcript Generated!</p>}
     </div>
   );
 };
