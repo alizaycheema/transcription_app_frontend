@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MyFiles.css';
 import MenuBar from '../components/MenuBar';
-import { List, ListItem, ListItemText, ListItemIcon, Paper, Divider } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemIcon, Paper, Divider, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import DescriptionIcon from '@mui/icons-material/Description';
 import Button from '@mui/material/Button';
@@ -16,12 +16,27 @@ const theme = createTheme({
 });
 
 const MyFiles = () => {
-  // Assuming you have an array of transcripts with their associated files
-  const transcripts = [
-    { id: 1, file: 'Transcript 1' },
-    { id: 2, file: 'Transcript 2' },
-    // Add more transcript entries as needed
-  ];
+  const [transcriptions, setTranscriptions] = useState([]);
+
+  useEffect(() => {
+    // Retrieve the token from session storage
+    const token = sessionStorage.getItem('token');
+
+    // Fetch the transcriptions from the API with the authorization token
+    fetch('https://meetoryte-trancription.onrender.com/api/transcription', {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the state with the fetched transcriptions
+        setTranscriptions(data.transcriptions);
+      })
+      .catch((error) => {
+        console.error('Error fetching transcriptions:', error);
+      });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -32,26 +47,35 @@ const MyFiles = () => {
         <div className="files">
           <h2>My Transcriptions</h2>
           <Paper className="transcript-list-container">
-            <List>
-              {transcripts.map((transcript, index) => (
-                <React.Fragment key={transcript.id}>
-                  <ListItem>
-                    <ListItemIcon>
-                      <DescriptionIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={transcript.file} />
-                    <Button
-                      component={Link}
-                      to={`/transcription/${transcript.id}`} // Update with your route
-                      variant="contained"
-                    >
-                      View
-                    </Button>
-                  </ListItem>
-                  {index !== transcripts.length - 1 && <Divider />} {/* Add a divider for all items except the last one */}
-                </React.Fragment>
-              ))}
-            </List>
+            {transcriptions.length > 0 ? (
+              <List>
+                {transcriptions.map((transcription, index) => (
+                  <React.Fragment key={transcription._id}>
+                    <ListItem>
+                      <ListItemIcon>
+                        <DescriptionIcon />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={transcription.title}
+                        secondary={`Created: ${new Date(transcription.createdAt).toLocaleString()}`}
+                      />
+                      <Button
+                        component={Link}
+                        to={`/transcription/${transcription._id}`}
+                        variant="contained"
+                      >
+                        View
+                      </Button>
+                    </ListItem>
+                    {index !== transcriptions.length - 1 && <Divider />}
+                  </React.Fragment>
+                ))}
+              </List>
+            ) : (
+              <Typography variant="body1" align="center" color="textSecondary">
+                You don't have any transcriptions.
+              </Typography>
+            )}
           </Paper>
         </div>
       </div>
