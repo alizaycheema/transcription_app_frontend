@@ -21,8 +21,8 @@ const MyFiles = () => {
   useEffect(() => {
     // Retrieve the token from session storage
     const token = sessionStorage.getItem('token');
-    console.log(token)
     // Fetch the transcriptions from the API with the authorization token
+    console.log(token+"fefef")
     fetch('https://meetoryte-trancription.onrender.com/api/transcription', {
       headers: {
         Authorization: token,
@@ -36,7 +36,7 @@ const MyFiles = () => {
       .catch((error) => {
         console.error('Error fetching transcriptions:', error);
       });
-  }, []);
+  }, [transcriptions]);
 
 
   return (
@@ -49,7 +49,7 @@ const MyFiles = () => {
           <h2>My Transcriptions</h2>
           <Paper className="transcript-list-container">
             <List>
-              {transcriptions && transcriptions.map((transcription, index) => (
+              {transcriptions && transcriptions?.map((transcription, index) => (
                 <React.Fragment key={transcription._id}>
                   <ListItem>
                     <ListItemIcon>
