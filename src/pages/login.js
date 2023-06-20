@@ -17,35 +17,61 @@ const theme = createTheme({
 const Login = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isInvalidCredentials, setIsInvalidCredentials] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleLogin = () => {
-    // Perform your login logic here, e.g., validate user credentials
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-    // Simulating a successful login
-    setIsLoggedIn(true);
+  const handleLogin = async (event) => {
+    event.preventDefault();
 
-    // Store the login status in session storage
-    sessionStorage.setItem('isLoggedIn', 'true');
+    try {
+      const { email, password } = formData;
+      const requestData = {
+        email,
+        password,
+      };
 
-    // Navigate to the desired page after successful login
-    navigate('/myfiles');
+      const response = await fetch('https://meetoryte-trancription.onrender.com/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        sessionStorage.setItem('token', responseData.token);
+        setIsLoggedIn(true);
+        setIsInvalidCredentials(false);
+        navigate('/myfiles');
+      } else {
+        setIsLoggedIn(false);
+        setIsInvalidCredentials(true);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const handleLogout = () => {
-    // Clear the login status from session storage
-    sessionStorage.removeItem('isLoggedIn');
-
-    // Update the login state
+    sessionStorage.removeItem('token');
     setIsLoggedIn(false);
-
-    // Navigate to the login page after logout
     navigate('/login');
   };
 
-  // Check if the user is already logged in
   React.useEffect(() => {
-    const storedIsLoggedIn = sessionStorage.getItem('isLoggedIn');
-    if (storedIsLoggedIn === 'true') {
+    const storedToken = sessionStorage.getItem('token');
+    if (storedToken) {
       setIsLoggedIn(true);
     }
   }, []);
@@ -80,11 +106,13 @@ const Login = () => {
                     label="Email"
                     variant="outlined"
                     fullWidth
+                    value={formData.email}
+                    onChange={handleInputChange}
                     InputProps={{
-                      style: { color: '#fff' }, // Set input text color to white
+                      style: { color: '#fff' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' }, // Set input label color to white
+                      style: { color: '#fff' },
                     }}
                   />
                 </div>
@@ -96,14 +124,21 @@ const Login = () => {
                     label="Password"
                     variant="outlined"
                     fullWidth
+                    value={formData.password}
+                    onChange={handleInputChange}
                     InputProps={{
-                      style: { color: '#fff' }, // Set input text color to white
+                      style: { color: '#fff' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' }, // Set input label color to white
+                      style: { color: '#fff' },
                     }}
                   />
                 </div>
+                {isInvalidCredentials && (
+                  <Typography variant="body1" component="p" style={{ color: 'red' }}>
+                    Invalid email or password
+                  </Typography>
+                )}
                 <Button variant="contained" onClick={handleLogin} color="primary">
                   Login
                 </Button>
