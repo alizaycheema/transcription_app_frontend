@@ -6,12 +6,13 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import TranscribeIcon from '@mui/icons-material/PlayArrow';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { Typography } from '@mui/material';
+import { Typography, CircularProgress } from '@mui/material';
 
 const Upload = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const [title, setTitle] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUploadButtonClick = () => {
     fileInputRef.current.click();
@@ -26,6 +27,12 @@ const Upload = () => {
   };
 
   const handleTranscribeButtonClick = () => {
+    if (!title || !fileInputRef.current || !fileInputRef.current.files[0]) {
+      return;
+    }
+
+    setIsLoading(true);
+
     // Handle the transcription generation here
     // You can use the title and the selected file to send the request to the API
     // After the API response, navigate to the appropriate page or show an error message
@@ -45,6 +52,7 @@ const Upload = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        setIsLoading(false);
         if (data._id) {
           // Transcription created successfully, navigate to the transcription page
           navigate(`/transcription/${data._id}`);
@@ -54,6 +62,7 @@ const Upload = () => {
         }
       })
       .catch((error) => {
+        setIsLoading(false);
         console.error('Error generating transcription:', error);
       });
   };
@@ -91,29 +100,34 @@ const Upload = () => {
             />
           </div>
         </div>
-          <div className="title">
+        <div className="title">
           <p> Enter a name for your file: </p>
-            <TextField
-              label="Title"
-              variant="outlined"
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-              style={{ backgroundColor: '#ffffff', marginTop: '2px',marginBottom: '10px', borderRadius: '5px' }}
-              />
-          </div>
-          <div className="transcribe-button">
-            <Button
-              variant="contained"
-              onClick={handleTranscribeButtonClick}
-              disabled={!title || !fileInputRef.current || !fileInputRef.current.files[0]}
-              style={{ backgroundColor: '#ffffff', color: '#173249'}}
-            >
-        
-              <span>Transcribe</span>
-              <TranscribeIcon className="transcribe-icon" />
-            </Button>
-          </div>
-        
+          <TextField
+            label="Title"
+            variant="outlined"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            style={{ backgroundColor: '#ffffff', marginTop: '2px', marginBottom: '10px', borderRadius: '5px' }}
+          />
+        </div>
+        <div className="transcribe-button">
+          <Button
+            variant="contained"
+            onClick={handleTranscribeButtonClick}
+            disabled={!title || !fileInputRef.current || !fileInputRef.current.files[0] || isLoading}
+            style={{ backgroundColor: '#ffffff', color: '#173249' }}
+          >
+            {isLoading ? (
+              <CircularProgress size={24} color="primary" />
+            ) : (
+              <>
+                <span>Transcribe</span>
+                <TranscribeIcon className="transcribe-icon" />
+              </>
+            )}
+          </Button>
+        </div>
+
         <div className="upload-guide">
           <Typography variant="body1">How to Upload a File:</Typography>
           <ol>

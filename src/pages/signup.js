@@ -17,15 +17,49 @@ const theme = createTheme({
 const Signup = () => {
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(false);
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+  });
 
-  const handleSignup = () => {
-    // Perform your signup logic here, e.g., validate user inputs and create a new account
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-    // Simulating a successful signup
-    setIsRegistered(true);
+  const handleSignup = async (event) => {
+    event.preventDefault();
 
-    // Navigate to the login page after successful signup
-    navigate('/login');
+    try {
+      const { firstname, lastname, email, password } = formData;
+      const requestData = {
+        firstname,
+        lastname,
+        email,
+        password,
+      };
+
+      const response = await fetch('https://meetoryte-trancription.onrender.com/api/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (response.ok) {
+        setIsRegistered(true);
+        navigate('/login');
+      } else {
+        console.error('Signup failed.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -53,16 +87,36 @@ const Signup = () => {
                 <div className="form-group">
                   <TextField
                     type="text"
-                    id="name"
-                    name="name"
-                    label="Name"
+                    id="firstname"
+                    name="firstname"
+                    label="First Name"
                     variant="outlined"
                     fullWidth
+                    value={formData.firstname}
+                    onChange={handleInputChange}
                     InputProps={{
-                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
+                      style: { color: '#fff' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#09090A' },
+                      style: { color: '#fff' },
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <TextField
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    label="Last Name"
+                    variant="outlined"
+                    fullWidth
+                    value={formData.lastname}
+                    onChange={handleInputChange}
+                    InputProps={{
+                      style: { color: '#fff' },
+                    }}
+                    InputLabelProps={{
+                      style: { color: '#fff' },
                     }}
                   />
                 </div>
@@ -74,11 +128,13 @@ const Signup = () => {
                     label="Email"
                     variant="outlined"
                     fullWidth
+                    value={formData.email}
+                    onChange={handleInputChange}
                     InputProps={{
-                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
+                      style: { color: '#fff' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#09090A' },
+                      style: { color: '#fff' },
                     }}
                   />
                 </div>
@@ -90,19 +146,19 @@ const Signup = () => {
                     label="Password"
                     variant="outlined"
                     fullWidth
+                    value={formData.password}
+                    onChange={handleInputChange}
                     InputProps={{
-                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
+                      style: { color: '#fff' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#09090A' },
+                      style: { color: '#fff' },
                     }}
                   />
                 </div>
-                <div className="button-container">
-                <Button variant="contained" onClick={handleSignup} color="primary" style={{ width: '150px' }}>
+                <Button variant="contained" onClick={handleSignup} color="primary">
                   Sign Up
                 </Button>
-                </div>
                 <div className="sign-up">
                   Already have an account? <Link to="/login">Log in</Link>
                 </div>

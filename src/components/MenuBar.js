@@ -53,11 +53,7 @@ const MenuBar = () => {
               Upload
             </Button>
           </li>
-          <li>
-            <Button component={Link} to="/transcription" color="inherit">
-              Transcription
-            </Button>
-          </li>
+          
         </ul>
       </Toolbar>
     </AppBar>
