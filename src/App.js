@@ -8,9 +8,7 @@ import MyFiles from './pages/MyFiles';
 import Upload from './pages/upload';
 import Transcription from './pages/transcription';
 
-
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -18,9 +16,10 @@ const App = () => {
       <Router>
         <NavBar />
         <Routes>
+          <Route path="/" element={<Navigate to="/home" />} /> {/* Redirect root URL to Home */}
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />}/>
+          <Route path="/signup" element={<Signup />} />
           <Route path="/myfiles" element={<MyFiles />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/transcription" element={<Transcription />} />

@@ -23,6 +23,7 @@
 .upload-heading {
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 5px;
 }
 
 .upload-heading h2 {
@@ -53,7 +54,7 @@
   background-color: #274967;
   border-radius: 5px;
   margin: 0 10px;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
 }
 
 .upload-option .upload-icon {
@@ -62,8 +63,8 @@
 }
 
 .upload-option button {
-  margin-top: 30px;
-  padding: 20px 30px;
+  margin-top: 20px;
+  padding: 10px 20px;
   background-color: #173249;
   color: #ffffff;
   border: none;
@@ -93,13 +94,14 @@
   margin-bottom: 10px;
   color: #888888;
 }
-.transcribe-icon{
-  color: #173249;
+
+p{
+  margin-top: 5px;
+  color: #ffffff;
 }
-.transcribe-button{
-  padding: 5px 15px;
-  font-size: 20px;
-  color: #0b0000;
+
+.transcribe-icon {
+  color: #173249;
 }
 
 @media (max-width: 600px) {
@@ -120,8 +122,6 @@
     font-size: 14px;
   }
 
-
-  
   .upload-guide p {
     font-size: 16px;
   }
@@ -131,4 +131,3 @@
     font-size: 14px;
   }
 }
-

@@ -90,23 +90,30 @@ const Upload = () => {
               onChange={handleFileInputChange}
             />
           </div>
-          <div className="transcribe-button">
+        </div>
+          <div className="title">
+          <p> Enter a name for your file: </p>
             <TextField
               label="Title"
               variant="outlined"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
-            />
+              style={{ backgroundColor: '#ffffff', marginTop: '2px',marginBottom: '10px', borderRadius: '5px' }}
+              />
+          </div>
+          <div className="transcribe-button">
             <Button
               variant="contained"
               onClick={handleTranscribeButtonClick}
               disabled={!title || !fileInputRef.current || !fileInputRef.current.files[0]}
+              style={{ backgroundColor: '#ffffff', color: '#173249'}}
             >
+        
               <span>Transcribe</span>
               <TranscribeIcon className="transcribe-icon" />
             </Button>
           </div>
-        </div>
+        
         <div className="upload-guide">
           <Typography variant="body1">How to Upload a File:</Typography>
           <ol>

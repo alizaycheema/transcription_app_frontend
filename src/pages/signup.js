@@ -59,10 +59,10 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     InputProps={{
-                      style: { color: '#fff' }, // Set input text color to white
+                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' }, // Set input label color to white
+                      style: { color: '#09090A' },
                     }}
                   />
                 </div>
@@ -75,10 +75,10 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     InputProps={{
-                      style: { color: '#fff' }, // Set input text color to white
+                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' }, // Set input label color to white
+                      style: { color: '#09090A' },
                     }}
                   />
                 </div>
@@ -91,16 +91,18 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     InputProps={{
-                      style: { color: '#fff' }, // Set input text color to white
+                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' }, // Set input label color to white
+                      style: { color: '#09090A' },
                     }}
                   />
                 </div>
-                <Button variant="contained" onClick={handleSignup} color="primary">
+                <div className="button-container">
+                <Button variant="contained" onClick={handleSignup} color="primary" style={{ width: '150px' }}>
                   Sign Up
                 </Button>
+                </div>
                 <div className="sign-up">
                   Already have an account? <Link to="/login">Log in</Link>
                 </div>

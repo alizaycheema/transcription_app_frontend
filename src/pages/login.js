@@ -109,10 +109,10 @@ const Login = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     InputProps={{
-                      style: { color: '#fff' },
+                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' , padding: '0px' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' },
+                      style: { color: '#09090A' },
                     }}
                   />
                 </div>
@@ -127,10 +127,10 @@ const Login = () => {
                     value={formData.password}
                     onChange={handleInputChange}
                     InputProps={{
-                      style: { color: '#fff' },
+                      style:{ backgroundColor: '#ffffff', marginTop: '10px', borderRadius: '5px' },
                     }}
                     InputLabelProps={{
-                      style: { color: '#fff' },
+                      style: { color: '#09090A' },
                     }}
                   />
                 </div>
@@ -139,9 +139,11 @@ const Login = () => {
                     Invalid email or password
                   </Typography>
                 )}
-                <Button variant="contained" onClick={handleLogin} color="primary">
+                <div className="button-container">
+                <Button variant="contained" onClick={handleLogin} color="primary"  style={{ width: '150px' }}>
                   Login
                 </Button>
+                </div>
                 <div className="sign-up">
                   Do not have an account? <Link to="/signup">Sign Up</Link>
                 </div>
